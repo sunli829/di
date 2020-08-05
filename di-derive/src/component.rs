@@ -218,8 +218,8 @@ pub fn generate(input: TokenStream) -> Result<TokenStream> {
                     set_props.push(quote! {
                         #field_ident: match props.get(#property_name) {
                             Some(value) => {
-                                di::serde_json::from_value(value.clone()).map_err(|err| {
-                                    di::Error::InvalidProperty {
+                                di_rs::serde_json::from_value(value.clone()).map_err(|err| {
+                                    di_rs::Error::InvalidProperty {
                                         component_name: #component_name.to_string(),
                                         property_name: #property_name.to_string(),
                                         message: err.to_string(),
@@ -259,11 +259,11 @@ pub fn generate(input: TokenStream) -> Result<TokenStream> {
 
                     set_props.push(quote! {
                         #field_ident: match props.get(#property_name) {
-                            Some(di::serde_json::Value::String(config)) => {
+                            Some(di_rs::serde_json::Value::String(config)) => {
                                 ctx.get::<#interface_ty>(config)?
                             }
                             Some(_) => {
-                                return Err(di::Error::InvalidProperty {
+                                return Err(di_rs::Error::InvalidProperty {
                                     component_name: #component_name.to_string(),
                                     property_name: #property_name.to_string(),
                                     message: "Expect string".to_string(),
@@ -293,7 +293,7 @@ pub fn generate(input: TokenStream) -> Result<TokenStream> {
 
     let expanded = quote! {
         #[allow(unused_variables)]
-        impl di::Component for #typename {
+        impl di_rs::Component for #typename {
             type Interface = dyn #interface;
 
             fn name() -> &'static str { #component_name }

@@ -1,4 +1,4 @@
-use di::*;
+use di_rs::*;
 use std::collections::HashMap;
 use std::sync::Mutex;
 
