@@ -1,0 +1,13 @@
+{
+  "components": {
+    "mylog": {
+      "name": "ConsoleLog"
+    },
+    "storage": {
+      "name": "MemoryStorage",
+      "props": {
+        "log": "mylog"
+      }
+    }
+  }
+}
