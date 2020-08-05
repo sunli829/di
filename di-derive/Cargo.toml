@@ -3,6 +3,12 @@ name = "di-derive"
 version = "0.1.0"
 authors = ["Sunli <scott_s829@163.com>"]
 edition = "2018"
+publish = true
+license = "MIT/Apache-2.0"
+documentation = "https://docs.rs/di/"
+homepage = "https://github.com/sunli829/di"
+repository = "https://github.com/sunli829/di"
+keywords = ["di", "ioc", "dependency", "inversion", "dependency-injection"]
 
 [lib]
 proc-macro = true
